@@ -1,0 +1,283 @@
+//https://codepen.io/komarovdesign/pen/PPRbgb?editors=1010
+// https://codepen.io/mtbroomell/pen/yNwwdv
+// https://codepen.io/justinecodes/pen/jBwXLr
+// https://codepen.io/pankajthakur/pen/dWwwKQ
+// https://codepen.io/occsceo/pen/wdRddd
+// https://codepen.io/vlad101/pen/xGQyOW
+
+jQuery(document).ready(function($) {
+
+    /**
+     * load scripts for checkout page
+     **/
+    if ( $('body.woocommerce-checkout').length ) {
+        console.log("checkout baby");
+
+        //run after ajax stops:
+        jQuery(document).ajaxStop(function() {
+            // change "time" to "start-time"
+            $('dt.variation-Time').html("Start Time:");
+            // change provider text
+            $('dt.variation-Selectyourpreferredprovider').html("Provider:");
+            // insert end time info
+            $('dd.variation-Time').after('<dt class="variation-endTime">End Time:</dt>');
+            $('dt.variation-endTime').after('<dd class="variation-endTime"><p></p></dd>');
+
+            // get default time as number format
+            defaultTime = parseInt($('dd.variation-Duration p').html());
+            //get additional time as numbef format
+            additionalTime = parseInt($('dd p:last').html());
+
+            //hide additional time
+            $('dd:last').hide();
+            $('dt:last').hide();            
+
+            // create totalTime value (minutes)
+            totalTime = defaultTime + additionalTime
+
+            //change duration display
+            $('dd.variation-Duration p').html(totalTime + ' minutes');
+
+            //get start time string, split into time (i.e. 4:00) and am/pm
+            startTime = $('dd.variation-Time p').html();
+            startTimeArray = startTime.split(" ");
+
+            // get the am or pm
+            startTimeAMPM = startTimeArray[1];
+
+            //split the time (i.e. 4:00) into hours and minutes
+            startTimeSplit = startTimeArray[0].split(":");
+            startTimeHours = Number(startTimeSplit[0]);
+            startTimeMinutes = Number(startTimeSplit[1]);
+            
+            // create date object from start time
+            if(startTimeAMPM = "pm") {
+                //convert 12 hours time to 24 hour time
+                startTimeHours += 12;
+            }
+            startTimeObject = new Date(0,0, 0, startTimeHours, startTimeMinutes, 0, 0);
+
+            //create end time date object; set as same time as start
+            endTimeObject = new Date(0,0,0,startTimeHours,startTimeMinutes,0,0)
+            // add totalTime to the minutes
+            endTimeObject.setMinutes(startTimeMinutes + totalTime)
+            endTimeString = endTimeObject.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'});
+            //format end time display
+            endTimeArray = endTimeString.split(" ");
+            endTimeAMPM = endTimeArray[1].toLowerCase();
+            endTimeSplit = endTimeArray[0].split(":");
+            endTimeHours = Number(endTimeSplit[0]);
+            endTimeMinutes = endTimeSplit[1];
+
+            //display end time
+            $('.variation-endTime p').html( endTimeHours +":"+ endTimeMinutes +" "+ endTimeAMPM)
+
+
+        })//end ajax stop
+    }
+
+/*** 
+ * load scripts for single product page
+***/
+
+    if ( $('body.single-product').length ) {   
+    // auto select radio button
+    $("input.wc-pao-addon-radio").prop("checked", true);
+
+jQuery(document).ajaxStop(function() {
+    
+    
+    timeDIV = $(".start-end-time");
+    startDIV = $(".start-time");
+    endDIV = $(".end-time");
+    
+    // create time container div
+    if(timeDIV.length == 0){
+        $(".wc-pao-addon-minimum-appointment-length").after("<div class='start-end-time'></div>");
+    }
+    // start time div
+    if (startDIV.length == 0) {
+        $(".start-end-time").append("Start time: <div class='start-time'></div>");
+    };
+    // end time div
+    if(endDIV.length == 0){
+        $(".start-end-time").append("End time:<div class='end-time' id='end-time-id'></div>");
+    
+    };
+
+    // get start time
+    startTime = Number($("#wc_appointments_field_start_date").attr("data-value"));
+         //console.log(startTime);
+       
+        startDate = new Date(0,0, 0, startTime/100, 0, 0, 0);
+
+    // default time (in minutes)
+    defaultTime = parseInt($(".wc-pao-addon-radio").val());
+
+    // get addon time (in minutes)
+    addOnTime = Number($(".wc-pao-addon-input-multiplier").val());
+    
+    // calculate end time
+
+    totalTime = defaultTime + addOnTime;
+
+    endDate = new Date(0, 0, 0, 0, 0,0,0);
+    endDate.setHours(startDate.getHours());
+    endDate.setMinutes(startDate.getMinutes() + totalTime);
+
+
+    //display final times
+    startTimeString = startDate.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'});
+    endTimeString = endDate.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'});
+
+    $(".start-time").html(startTimeString);
+    $(".end-time").html(endTimeString);
+
+    // calculating date time - https://stackoverflow.com/questions/10804042/calculate-time-difference-with-javascript
+    // js date object - https://www.w3schools.com/jsref/jsref_obj_date.asp
+
+    /*
+    // set time for fake time quantity chooser
+    */
+   
+
+    timeSelectorDIV = $(".time-selector");
+        if(timeSelectorDIV.length == 0){
+            $(".start-end-time").before("<div class='time-selector'><label>Change appointment length (max 120)</div>");
+            $(".time-selector").append("<form><input type='button' value='-' id='qtyminus' /><input id='qty'></input><input type='button' value='+' id='qtyplus' /></form>");
+            
+    
+    // sets actualy add on value to 0
+    $(".wc-pao-addon-input-multiplier").val(0); 
+
+     // sets default value as default time
+    $("#qty").attr("value", defaultTime);
+    $("#qty").after("minutes");
+    // sets minimum time
+    $("#qty").attr("min",defaultTime);
+    // sets minimum time
+    maxTime = $(".wc-pao-addon-input-multiplier").attr("max");
+    $("#qty").attr("max", maxTime);
+
+    //click "+" button function
+    $("form #qtyplus").click(function(){
+        
+        oldTime = Number($("#qty").val());
+        newTime = oldTime + defaultTime; 
+        
+        if (newTime >= Number(maxTime)) {  
+            // if greater than max allowed time, set appointment length to maximum time
+            $("#qty").val(Number(maxTime));   
+            $(".wc-pao-addon-input-multiplier").val(Number(maxTime - defaultTime));
+
+            // update the "end-time" display
+                //add the (maxTime-defaultTime) to the startDate minutes
+                endDate = new Date(0, 0, 0, 0, 0,0,0);
+                endDate.setHours(startDate.getHours());
+                endDate.setMinutes(startDate.getMinutes());
+                endDate.setMinutes(Number(maxTime));
+                // convert to readable string
+                endTimeString = endDate.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'});
+                $(".end-time").html(endTimeString);
+
+        } else {                   
+           $("#qty").val(newTime);
+           $(".wc-pao-addon-input-multiplier").val(newTime - defaultTime);
+           //update the "end-time" display
+            //reset time to starting time
+            endDate.setHours(startDate.getHours());
+            endDate.setMinutes(startDate.getMinutes());
+            //add minutes value to resetted time
+            endDate.setMinutes(newTime);
+           //convert to nice looking time string    
+           plusDateString = endDate.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'});
+           //display time string
+            $(".end-time").html(plusDateString);    
+            
+            selector = $('.wc-pao-addon-input-multiplier');
+            selector.focus();
+            selector.click();
+            selector.mousedown();
+            //$(selector)[0].select();
+            console.log(selector);
+            
+        }
+
+        
+
+        });
+    
+    // click "-" button function
+    $("#qtyminus").click(function(){
+        
+    oldTime = Number($("#qty").val());
+    newTime = oldTime - defaultTime; 
+        
+    if (newTime <= defaultTime) {  
+        // if appointment length is less than or equal to minimum time...
+        $("#qty").val(defaultTime); 
+        $(".wc-pao-addon-input-multiplier").val(0);   
+        
+        // update the "end-time" display
+        //add the (maxTime-defaultTime) to the startDate minutes
+        endDate = new Date(0, 0, 0, 0, 0,0,0);
+        endDate.setHours(startDate.getHours());
+        endDate.setMinutes(startDate.getMinutes() + defaultTime);
+        // convert to readable string
+        endTimeString = endDate.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'});
+        $(".end-time").html(endTimeString);
+    }
+     else {                   
+         // if appointment length is greater than minimum time..
+       $("#qty").val(newTime);
+       $(".wc-pao-addon-input-multiplier").val(newTime - defaultTime); 
+
+       // update the "end-time" display
+           //reset time to starting time
+           endDate.setHours(startDate.getHours());
+           endDate.setMinutes(startDate.getMinutes());
+           //add minutes value to resetted time
+           endDate.setMinutes(newTime);
+           //convert to nice looking time string    
+             minusDateString = endDate.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'});
+            //display time string
+             $(".end-time").html(minusDateString);
+    }
+    });
+
+    stepThree = $(".step-three");
+    if(stepThree.length == 0){
+        
+        $(".wc-pao-addon-name").first().before("<div class='step-three booking-instructions'>3. Enter the length of your appointment</div>");
+            
+    
+    }
+}
+  
+}) // end ajaxStop
+
+
+
+jQuery(document).ajaxComplete(function() {
+    //console.log("ajax completed");
+    //$(".wc-appointments-appointment-hook-after").after(endTime);
+
+
+    
+}); // end ajaxComplete
+
+      
+
+  jQuery(document).ajaxSuccess(function() {
+    //console.log("ajax success");
+    //$(".wc-pao-addon-minimum-appointment-length").after("<div class='booking-instructions'>3. Enter the length of your appointment</div>");
+
+             
+});
+
+
+}
+
+
+
+});//close all jquery 

@@ -1,0 +1,1193 @@
+/*
+Theme Name:     SS Clearshot Child
+Theme URI:      
+Template: neve
+Author:         Clearshot Media 
+Author URI:     http://clearshotmedia.com.au/
+Description:    
+Version:        1.0.0
+License:        
+License URI:    
+Text Domain:    ss-clearshot
+Tags: 
+*/
+.pum-overlay {
+	overflow: scroll !important;
+}
+
+html {
+	scroll-behavior: smooth;
+  }
+
+button {
+	background-color: #1d6413;
+	border-radius: 10px;
+	color: #fff;
+}
+
+button:hover {
+	background-color: #0062A9;
+}
+.grecaptcha-badge { visibility: hidden; }
+
+select {
+	height: auto !important;
+	background-color: #fff;
+}
+
+.center-align {
+	text-align: center;
+}
+/* # HEADER */
+
+.header-phone {
+	font-weight: bold;
+	font-size: 1em;
+	display: block
+}
+.header-phone::before {
+	content: '';
+	background:url('/wp-content/uploads/2020/04/Phone-14.png') no-repeat;
+	background-size: 13px 13px;
+	width: 13px;
+	height: 13px;
+	display: inline-block;
+	position: relative;
+	top: 1px;
+	right: 8px;
+}
+
+
+img.i-love-ndis-header {
+	width: 50px;
+	}
+
+/** ## Header MENU **/
+li.menu-home a {
+	visibility: hidden;
+	font-size: 0;
+}
+.menu-home a {
+	height: 1.6em;
+}
+.menu-home a::before {
+	font-family: "Font Awesome 5 Free"; 
+	content:"\f015";
+	color: #18191d;
+	font-weight: 900;
+	visibility: visible;
+	font-size: 20px !important;
+	
+	}
+.menu-home a::after{
+	content:"";
+}
+
+.main-menu-contact {
+	font-size: 1em;
+    font-weight: 500;
+    text-transform: none;
+    line-height: 1.6;
+	height: 25px;
+	position:relative;
+	top: -3px;	
+}
+.main-menu-contact:hover{
+	text-decoration: none;
+}
+
+
+.register {
+	background-color: #1e7d10;
+	padding: 8px 12px;
+	border-radius: 3px;
+}
+
+.my-account-button, .login {
+	background-color: #0062a9;
+    padding: 8px 12px;
+    border-radius: 3px;
+    }
+
+#secondary-menu .login-menu a {
+	color: #fff;
+	text-transform: uppercase !important;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+#secondary-menu .login-menu a:hover {
+	color: #fff !important;	
+}
+
+/* ## BREADCRUMBS */
+.neve-breadcrumbs-wrapper a {
+	color: #fff !important;
+}
+.page-breadcrumbs {
+	display: flex;
+    width: 100vw;
+    position: absolute;
+	z-index: 2;
+	margin-top: 12px;
+}
+
+.page-id-756 .page-breadcrumbs {
+	position: relative;
+	background-color: #1e7d10;
+	padding-top: 12px;
+	margin-top: 0 !important;
+}
+
+
+#breadcrumbs {
+background-color: transparent;
+color: #fff;
+padding-left: 15px;
+width: 1140px;
+margin: auto;
+}
+
+#breadcrumbs span a {
+	color: #fff;
+}
+
+#breadcrumbs-myaccount, .page-id-505 #breadcrumbs, .page-id-504 #breadcrumbs {
+	background-color: #1E7D10;
+	color: #fff;
+	position: relative;
+	display: flex;
+	margin: auto;
+	padding-left: 0;
+	
+}
+#breadcrumbs-myaccount span, .page-id-505 #breadcrumbs span, .page-id-504 #breadcrumbs span{
+	width: 1140px;
+    margin: auto;
+    display: flex;
+    padding: 7px;	
+}
+
+#breadcrumbs-myaccount span a{
+	color: #fff;
+}
+
+.woocommerce-checkout .neve-main {
+    padding-top: 0 !important;
+}
+
+/* # FOOTER */
+
+.footer-top .footer-top-inner .container .row{
+	padding-top: 25px;
+	display: flex;
+	align-items: normal;
+}
+
+.footer-top-inner .hfg-item-first {
+	 display: flex;
+    align-items: center;
+    position: relative;
+    bottom: 30px;
+}
+
+
+
+#menu-footer-menu li {
+	border-bottom: 1px solid #393939;
+	padding: 2px 0 7px 0;
+}
+
+#menu-footer-menu li::before {
+	font-family: "Font Awesome 5 Free"; 
+	content:"\f0da";
+	color: #999;
+	margin-right: 2px;
+	font-weight: 900;
+	}
+#menu-footer-menu li::after{
+	content:"";
+}
+
+.footer-text, #menu-footer-menu li a {
+	color: #999;
+	font-size: 15px;
+}
+
+.builder-item--footer-three-widgets{
+	border-bottom: 0px solid #393939;
+	padding-bottom: 15px;
+	
+}
+
+#text-3 {
+	margin-bottom: 20px;
+	padding-bottom: 0px;
+}
+
+img.i-love-ndis-footer {
+	width: 100px;
+	display: block;
+	margin: auto;
+}
+
+/* ## footer bottom row */
+
+.bottom-footer-right {
+	font-size: 14px;
+	color: #999;
+	float: right;
+}
+
+
+/* # MOBILE / TABLET */
+.mobile-only {
+	visibility: hidden;
+}
+@media (max-width: 768px) {
+
+	body {
+		text-align: justify;
+		font-size: 20px;
+	}
+
+	#breadcrumbs {
+		display: none;
+	}
+	
+	.mobile-only {
+		visibility: visible; 
+	}
+
+/* ## Mobile header and hero */
+
+	img.i-love-ndis-header {
+	max-width: 35px;
+	}
+
+	.simple-page-hero .elementor-container .elementor-row {
+		padding-left: 10px;
+	}
+
+	.hero-container {
+		max-height: calc(100vh - 255px);
+	}
+
+	#secondary-menu {
+		justify-content: flex-start !important;
+		font-size: 15px;
+	}
+
+	#secondary-menu .register{
+		margin-right: 10px;
+	}
+
+/* ## Mobile Footer */
+	/* stream services footer logo */
+	#media_image-3 img {
+		width: 200px;
+	}
+	.builder-item--footer-one-widgets {
+		margin: auto;
+		padding-top: 30px;
+	}
+	.footer-top-inner .hfg-item-first {
+    position: relative;
+    bottom: 0;
+	}
+
+/* ## single pages */
+	.article-image {
+		min-height: 500px;
+	}
+
+/* ## MOBILE MENU */
+	.builder-item--primary-menu .primary-menu-ul > li > a {
+height: 35px;
+		}
+
+/* ## MOBILE INTAKE FORM */
+
+	.intake-title {
+		display: flex !important;
+		width: 100% !important;
+	}
+	.modal-top-phone {
+		display: flex !important;
+		width: 100% !important;
+		align-items: center;
+		justify-content: space-between;
+		text-align: left !important;
+	}
+	.modal-top-phone span {
+		padding: 0 2px !important;
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.modal-top-phone span a {
+		display: block;
+		margin-left: 5px;
+	}
+
+	.model-top-phone img {
+		max-height: 50px;
+	}
+
+
+	body.page-id-509 {
+		padding: 0 0 !important;
+		text-align: left !important;
+	}
+	input:not([type=button]), .wppb-form-field textarea, .wppb-form-field label {
+		width: 100% !important;
+	}
+	
+
+	.wppb-user-forms select {
+		font-size: 80%;
+	}
+	#ui-datepicker-div {
+		max-width: 100%;
+	}
+
+	.wppb-radios li {
+		display: flex !important;
+		padding: 0 !important;
+		align-items: baseline;
+	}
+	.wppb-user-forms input[type="radio"], .wppb-user-forms input[type="checkbox"] {
+		max-width: 10% !important
+	}
+
+
+}
+
+
+
+/* # HOMEPAGE */
+
+/* ## Hero */
+
+@media (min-width: 768px){
+	.elementor-5 .elementor-element.elementor-element-ba0dba5 {
+		width: auto;
+}
+	
+.homepage-hero-green-section .elementor-column-wrap .elementor-widget-wrap{
+	padding-left: calc((100vw - 1140px)/2);	
+}
+
+.hero-buttons .elementor-column-wrap .elementor-widget-wrap {
+	padding-left: 0;
+}
+}
+/* ## Quote */
+
+.homepage-quote::before {
+	
+	font-family: "Font Awesome 5 Free"; 
+	font-weight: 900;
+	font-size: 30px;
+	color: #42b8d4;
+	content: "\f10d";
+	position: absolute;
+	left: 30px;
+	top: -3px;
+}
+
+.homepage-quote::after {
+	content:"";
+}
+
+/* # NDIS Pricing Page */
+
+/* ## how does it affect you section */
+.how-does-it-affect-you li {
+	margin-bottom: 15px;
+}
+
+
+
+/* # CAREERS PAGE */
+
+.careers-form {
+    background-color: #f6f6f6;
+    padding: 22px;
+    border-radius: 5px;
+    border: 1px solid #dcdcdc;
+}
+
+.careers-form input {
+	max-width: 100% !important;
+}
+
+.wpforms-form button[type=submit] {
+	background-color: #1e7d10 !important;
+    border: none !important;
+    color: #fff !important;
+    font-size: 1em !important;
+    padding: 15px 30px !important;
+	
+}
+/* # PRICING PAGE */
+a.ndis-website {
+	color: #1E7D10 !important;
+	text-decoration: underline;
+}
+a.ndis-website:hover{
+	text-decoration: none;
+}
+
+/* # MAKE A REFERRAL PAGE */
+
+#wpcf7-f847-p848-o2 form{
+width: 100%
+}
+.referral-form {
+	background-color: #f6f6f6;
+	padding: 25px;
+}
+.referral-form p {
+	display: flex !important;
+	flex-wrap: wrap;
+    margin: auto;
+    
+}
+
+.referral-form p label {
+	margin: auto;
+	margin-bottom: 15px;
+    flex-basis: 48%;
+}
+.referral-full-width {
+	width: 100%;
+}
+
+.referral-full-width label {
+	flex-basis: 98% !important;
+}
+
+.wpcf7 input[type='checkbox'] {
+	width: auto !important;
+	position: relative;
+	top: -3px;
+	margin-right: 3px;
+}
+
+
+
+
+/* # Popup modal box thing */
+
+.pum-title {
+	border-bottom: 2px solid #007bd6;
+}
+
+.pum-content {
+	padding-top: 35px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.pum-content p {
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+p.please-note{
+	text-align: left;
+	padding: 0px 30px 0 30px;
+}
+ul.please-note-list {
+	padding: 0 60px;
+	list-style: disc !important;
+}
+ul.please-note-list li {
+	margin-bottom: 20px;
+}
+
+
+.confirmation-yes-no {
+	text-align: center;
+}
+
+.confirmation-yes-no button{
+	text-align: center;
+	margin: 0 5px;
+	color: #fff;
+	padding: 15px 35px;
+	border-radius: 5px;
+}
+button.yes {
+	background-color: #008300;
+}
+button.no{
+	background-color: #0074e1;
+}
+
+.no-problem {
+	color: #008300;
+	margin-top: 0px; /* change to 60 */
+	visibility: hidden; /* change to visible */
+	height: 0px; /* change to auto? */
+}
+
+.no-problem-show {
+	color: #008300;
+	margin-top: 40px; /* change to 60 */
+	visibility: visible; /* change to visible */
+	height: auto; /* change to auto? */
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.initial-registration-confirmation {
+	padding: 20px 0;
+}
+
+.close-button{
+	display: block;
+	color: #fff;
+	padding: 15px 35px;
+	border-radius: 5px;
+	background-color: #0074e1;
+	width: 20%;
+	margin: auto;
+}
+
+.no-form, .yes-form{
+	display: none;
+}
+
+/* # Contact form 7 */
+
+.wpcf7 {
+	width: 100%;
+}
+
+.wpcf7 form {
+	width: 70%;
+	margin: auto;
+}
+
+.wpcf7 p{
+	text-align: left;
+	display: block;
+	margin-bottom: 15px;
+}
+
+.wpcf7 input {
+ width: 100%;
+ margin-top: 7px;
+}
+
+.wpcf7 textarea {
+ width: 100%;
+ height: 100px;
+ margin-top: 7px;
+}
+
+.wpcf7-form label {
+	width: 100%;
+	margin-bottom: 0px;
+}
+.wpcf7 input, .wpcf7 select, .wpcf7 textarea{
+	background-color: #fff;
+}
+.wpcf7 input[type="submit"] {
+	background-color: #1e7d10;
+	color: #fff;
+}
+
+
+/** ## Client Intake Modal **/
+#wppb-form-element-142 h5 {
+	font-size: 1em;
+    font-weight: normal;
+    text-align: center;
+}
+
+#pum_popup_title_432 {
+	display: flex;
+	width: 100%;
+	align-content: center;
+	font-family: "Asap", san-serif;
+	align-items: baseline;
+	justify-content: space-between;
+}
+
+
+.intake-title {
+	display: inline-block;
+	vertical-align: middle;
+	width: auto;
+}
+.modal-top-phone {
+display: inline-block;
+vertical-align: middle;
+font-size:20px;
+text-align: right;
+width: auto;
+}
+
+.modal-top-phone span, .modal-top-phone img {
+	display: inline-block;
+	vertical-align: middle;
+	padding: 10px;
+
+}
+
+
+
+
+/* # Client Intake Form Page */
+
+.final-registration {
+	width: 100%;
+margin: auto;
+background-color: #f1f1f1;
+padding: 30px;
+border-radius: 20px;
+}
+.final-registration input, .final-registration textarea {
+	background-color: #fff;
+	font-family: "Asap", san-serif;
+}
+
+body.page-id-509 {
+	background-color: #f6f6f6;
+	padding: 0 50px;
+}
+
+.page-id-509 .userway{
+	display: none;
+}
+
+.page-id-509 .nv-content-wrap ul {
+	padding-left: 0px;
+}
+
+.page-id-509 #scroll-to-top {
+	display: none;
+}
+
+.wppb-user-forms ul {
+	max-width: 100% !important;
+}
+
+.wppb-form-field input{
+	padding: 8px !important;
+}
+
+.page-id-509 .wppb-woo-billing-fields .wppb_billing_heading {
+	padding-bottom: 0;
+}
+.wppb_billing_heading h4 {
+	margin-bottom:0;
+}
+
+.wppb-msf-step-commands input[type="button"].wppb-msf-button {
+	border-radius: 5px;
+	padding: 10px 20px;
+}
+
+.wppb-msf-step-commands input[type="button"].wppb-msf-next {
+	background-color: #1e7d10;
+
+}
+
+.wppb-msf-step-commands input[type="button"].wppb-msf-prev {
+
+	background-color: #007bd6;
+	}
+
+.wppb-user-forms .wppb-checkboxes li{
+	display: block !important;
+}
+
+.form-submit[data-wppb-msf="yes"] #register{
+ 	background-color: #1e7d10;
+    color: #fff;
+    padding: 18px 0;
+	border-radius: 10px;
+	margin-top:15px;
+}
+
+input[type="button"].wppb-msf-button:disabled {
+	visibility: hidden;
+}
+
+
+h3.extra_field_heading {
+	text-align: center;
+}
+
+.wppb-checkboxes li .wppb-rc-value {
+	font-weight: normal !important;
+}
+
+.ui-datepicker .ui-datepicker-title select {
+	font-size: 0.8em !important;
+}
+
+.wppb-heading {
+	border-bottom: 1px solid #999;
+	margin-bottom: 1em !important;
+}
+
+.region-select{
+	position: relative;
+}
+
+.region-select .tooltiptext {
+visibility: hidden;
+width: 370px;
+background-color:#222;
+color: #fff;
+text-align: center;
+border-radius: 6px;
+padding: 5px;
+/* Position the tooltip */
+position: absolute;
+z-index: 1;
+bottom: 130%;
+left: 50%;
+margin-left: -185px;
+}
+
+.region-select:hover .tooltiptext {
+	visibility: visible;
+}
+
+.region-select .tooltiptext::after {
+	content: " ";
+	position: absolute;
+	top: 100%; /* At the bottom of the tooltip */
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: black transparent transparent transparent;
+  }
+
+#client-intake-form-page .elementor-container .elementor-row {
+	flex-direction: column;
+}
+
+.wppb-heading .wppb-description-delimiter {
+	text-align: center;
+}
+
+/* # MY ACCOUNT PAGE */
+.woocommerce {
+	padding-top: 0 !important;
+}
+.my-account-header {
+	background-color: #1E7D10;
+	width: 100vw;
+	color: #fff;
+	position: relative;
+	margin-left: -50vw;
+	margin-right: -50vw;
+	left: 50%;
+	right: 50%;
+	margin-bottom: 20px;
+}
+.my-account-header-breadcrumbs {
+ color: #fff;
+ max-width: 1140px;
+ margin-left: auto;
+ margin-right: auto;
+ padding: 7px;
+}
+.my-account-header-breadcrumbs a{
+	text-decoration: none !important;
+}
+
+.my-account-header-title {
+	max-width: 1140px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px;
+	padding-left: 15px;
+}
+
+
+.form-submit[data-wppb-msf-ep="yes"] #edit_profile {
+    width: 100%;
+    background-color: #0062A9;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#dashboard-profile .wppb-user-forms, #dashboard-profile #select_user_to_edit_form {
+ display: none;
+ height: 0;
+}
+
+.woocommerce-orders-table__cell-order-actions a.button {
+	margin-right: 5px;
+}
+
+.nv-page-title-wrap {
+	margin-top: 0 !important;
+	
+	background-color: #1E7D10;
+	width: 100vw;
+    position: relative;
+    margin-left: -50vw;
+    left: 50%;
+}
+
+.nv-page-title {
+	max-width: 1140px;
+	margin-left: auto;
+	margin-right: auto;
+	border-bottom: 0px !important;
+	color: #fff;
+	padding-left: 7px;
+	padding-bottom: 20px !important;
+}
+
+.my-account-above-menu {
+	display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 30px;
+}
+
+#dashboard-profile{
+	text-align: left;
+	padding: 25px 0px 0 0px;
+	justify-content: space-between;
+	display: flex;
+	align-items: baseline;
+	margin-bottom: 15px;
+}
+#dashboard-profile h4{
+	margin-right: 10px;
+}
+
+#dashboard-profile #wppb-epaa-admin-review-links {
+	display: none;
+}
+
+.wppb-sc-button-text {
+	min-width: 0 !important;
+}
+
+.privacy-myaccount {
+	padding: 10px;
+background-color: #f1f1f1;
+width: 100%;
+display: block;
+text-align: center;
+margin-bottom: 15px;
+}
+
+/* ## My Account --> Edit Profile page */
+.page-id-505 #wppb-msf-pagination-2, .page-id-505 #wppb-msf-pagination-1, .page-id-505 #wppb-msf-pagination-3,.page-id-505 #wppb-msf-pagination-4, .page-id-505 .wppb-msf-step-commands {
+	display: none;
+}
+
+.woocommerce-edit-account #wppb-msf-step-0 {
+	display: none !important;
+}
+.woocommerce-edit-account #wppb-msf-step-1 {
+	display: block !important;
+}
+.agreement-box {
+	padding: 30px;
+    background-color: #f6f6f6;
+}
+
+/* ## My account --> Service agreement page */
+
+.service-agreement h3 {
+	margin-top: 25px;
+}
+.what-supports-subhead {
+	font-size: 1.3em;
+}
+
+/* ## My account --> My NDIS page */
+.my-ndis-edit #wppb-msf-pagination {
+	display: none;
+}
+
+.my-ndis-edit .wppb-sc-buttons-container {
+	display: none;
+}
+
+.my-ndis-edit .wppb-msf-step-commands {
+	display: none;
+}
+
+.my-ndis-edit #wppb-msf-step-0 {
+	display: none !important;
+}
+
+.my-ndis-edit #wppb-msf-step-3 {
+	display: block !important;
+}
+
+
+/* ## My account --> Add a service page */
+
+.add-service #wppb-msf-pagination {
+	display: none;
+}
+
+.add-service .wppb-sc-buttons-container {
+	display: none;
+}
+
+.add-service .wppb-msf-step-commands {
+	display: none;
+}
+
+.add-service #wppb-msf-step-0 {
+	display: none !important;
+}
+
+.add-service #wppb-msf-step-4 {
+	display: block !important;
+}
+
+
+
+/* ## My account --> Utilisation page */
+
+.utilisation-hr {
+	display: block;
+	border-top: 1px solid #999;
+	width: 33%;
+	margin: 0 auto 30px;
+}
+
+.utlisation-grid-container-four {
+	display: grid;
+	grid-template-columns: repeat(4,1fr);
+	grid-gap: 0px;
+	margin-bottom: 2em;
+	background-color: #f1f1f1;
+	border-radius: 20px;
+	padding: 20px;
+}
+
+.utlisation-grid-container {
+	display: grid;
+	grid-template-columns: repeat(3,1fr);
+	grid-gap: 0px;
+	margin-bottom: 2em;
+	background-color: #f1f1f1;
+	border-radius: 20px;
+	padding: 20px;
+}
+
+.utlisation-grid-container .container-3 {
+	border-right: none;
+}
+
+.utilisation-grid {
+	
+	padding: 21px;
+	text-align: center;
+}
+
+.container-1, .container-2, .container-3 {
+	border-right: 1px solid #ccc;
+}
+
+
+.utilisation-grid .start-date,.utilisation-grid .end-date{
+	font-size: 1.5em;
+	display: block;
+}
+.utilisation-grid h4{
+	text-align: center;
+	margin-bottom: 1em;
+}
+
+.container-1 span, .container-2 span {
+	font-size: 2.5em;
+	color: #0062a9;
+	font-weight: bold;
+}
+.container-3 span, .container-4 span {
+	font-size: 2.5em;
+	color: #1d6413;
+	font-weight: bold;
+}
+
+
+
+/* ## My Account --> Orders / View Order View appointment  page */
+
+.staff-log {
+	background-color: #f1f1f1;
+	padding: 30px;
+}
+
+.staff-log ul {
+	margin-bottom: 30px;
+}
+
+.woocommerce-order-details__title{
+	margin-top:40px;
+}
+
+.woocommerce-orders-table__cell-order-actions a.pay {
+	display: none;
+}
+
+.appointment-actions a.pay {
+	display: none;
+}
+.appointment-actions a.button {
+	margin: 3px;
+}
+
+/* # SERVICES (SHOP) page */
+.services-breadcrumbs-container {
+	display: flex;
+	background-color: #1E7D10;
+}
+.services-breadcrumbs {
+	width: 1140px;
+	margin: auto;
+	padding: 15px;
+	color: #fff;
+}
+.services-breadcrumbs span a {
+	color: #fff;
+}
+.nv-bc-count-wrap{
+	display: none;
+	
+}
+
+/* # SINGLE PRODUCT PAGE */
+.product_meta .sku_wrapper {
+	display: none;
+}
+
+.woocommerce-tabs {
+	width: 45%;
+	float: left;
+	clear: none !important; 
+}
+
+.product .summary .price {
+	display: none;
+}
+
+.wc-appointments-appointment-cost {
+	display: none !important;
+}
+
+.woocommerce-notices-wrapper {
+	display: none; 
+}
+
+.booking-instructions {
+	font-weight: bold !important;
+}
+
+.wc-pao-addon-wrap, .wc-pao-addon-name {
+	display: none !important;
+}
+
+.start-end-time {
+	display: flex;
+}
+.start-time, .end-time {
+	margin-left: 10px;
+	margin-right: 50px;
+}
+
+.wc-pao-addon-additional-time {
+	visibility: visible;
+	height: 0;
+}
+
+#qty {
+	font-size: 1em;
+	width: 3em;
+	text-align: center;
+	border: 0;
+	display: none;
+}
+#qtyplus {
+	margin-left: 14px;
+	background-color: #00AFFF;
+}
+#qtyminus {
+	background-color: #00AFFF;
+}
+
+.displayed-length {
+	width: 100px;
+	text-align: center;
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.time-selector {
+	margin-bottom: 15px;
+}
+
+
+.wc-pao-addon-minimum-appointment-length label, .wc-pao-addon-minimum-appointment-length p {
+	display: none !important;
+}
+
+.appointment-summary {
+	border: 3px solid #1d6413;
+    padding: 15px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.start-time, .end-time, .appointment-summary-detail {
+	font-weight: bold;
+}
+
+.time-note {
+	font-size: 15px;
+    background-color: #f1f1f1;
+    padding: 10px;
+    margin-top: 10px;
+}
+/* # CHECKOUT PAGE */
+
+.woocommerce .woocommerce-message, .woocommerce-page .woocommerce-message {
+	display: none;
+}
+
+.woocommerce-billing-fields__field-wrapper {
+	display: none;
+}
+
+#wc_twilio_sms_optin_field {
+	font-size: 20px;
+}
+
+.wc_payment_methods {
+	display: none;
+}
+
+.variation-Minimumappointmentlength {
+	display: none !important;
+}
+
+/* # 2FA Modal */
+.wp2fa-modal .modal__container {
+	max-height: 100vh !important;
+}
+.learn_more_link {
+	display: none !important;
+}

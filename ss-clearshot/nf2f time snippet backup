@@ -1,0 +1,84 @@
+/**
+allow decimal points in order details 
+**/
+// Add min value to the quantity field (default = 1)
+add_filter('woocommerce_quantity_input_min', 'min_decimal');
+function min_decimal($val) {
+    return 0.1;
+}
+
+// Add step value to the quantity field (default = 1)
+add_filter('woocommerce_quantity_input_step', 'nsk_allow_decimal');
+function nsk_allow_decimal($val) {
+    return 0.1;
+}
+
+// Removes the WooCommerce filter, that is validating the quantity to be an int
+remove_filter('woocommerce_stock_amount', 'intval');
+
+// Add a filter, that validates the quantity to be a float
+add_filter('woocommerce_stock_amount', 'floatval');
+
+
+/**
+ * @param int $post_id The post ID.
+ * @param post $post The post object.
+ * @param bool $update Whether this is an existing post being updated or not.
+ */
+function add_NF2F_on_update( $post_id, $post, $update) {
+	// only run if it is an existing order/post
+	if($update !== true) {
+		return;
+	}
+	
+    $post_type = 'shop_order';  
+	
+	//runs only if it is an order post type
+	if ( $post_type != $post->post_type ) {
+        return;
+    }
+		
+	
+	// get price
+	$order = wc_get_order( $post_id ); // get order object from id
+	
+		$order_items = $order->get_items( array('line_item', 'fee', 'shipping') );
+	
+		if ( !is_wp_error( $order_items ) ) {
+			foreach( $order_items as $item_id => $order_item ) {
+				$name = $order_item->get_name();
+				
+				// check if NF2F item already exists, and if it does, then cancel
+				if($name == 'Total NF2F Time'){
+					break;
+				 }				
+				// gets price of service item
+				$price = $order_item->get_total(); // item price
+			}
+		
+	
+	// ACF field data
+	$nf2f_claimable_time = get_field('nf2f_claimable_time', $post_id);
+	$nf2f_time = $nf2f_claimable_time['total_hoursminutes'];
+	
+	// add NF2F item to order details if doesn't exist
+	
+	$order_item_id = wc_add_order_item( $post_id, array(
+	'order_item_name' => 'Total NF2F Time',
+	'order_item_type' => 'line_item', // product
+	));
+	
+	//set quantity to inputted time
+	//wc_add_order_item_meta( $order_item_id, '_qty', $nf2f_time, true );
+	
+	//set cost of NF2F
+	$total_cost = ($nf2f_time * $price); // inputted time * item price
+	wc_add_order_item_meta($order_item_id, '_line_total', $total_cost, true);
+	
+	//recalculate cost
+	$order_calc = new WC_Order( $post_id );
+	$order_calc->calculate_totals();
+
+}
+}
+add_action( 'save_post', 'add_NF2F_on_update', 10,3 ); 
